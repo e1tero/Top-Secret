@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1312a11add4b0cb42839ea6e158cfebe, type: 3}
+  m_Name: DataInstaller
+  m_EditorClassIdentifier: 
+  testLevel: 0
+  patternLevel: 0
+  levels:
+  - {fileID: 3654525423721143265, guid: b3804f942ce19fa46a720f91b0f44a90, type: 3}
+  - {fileID: 4921428660459504731, guid: 4dc2397c72eebba47aba49a2c92c0c50, type: 3}
+  - {fileID: 6276455859414008014, guid: f9cf95690c14db648b375b029a51b112, type: 3}
+  - {fileID: 8438025803405639971, guid: a6463a60ddd1dea408289639fb1a7d57, type: 3}
+  - {fileID: 6276455859414008014, guid: d741aaced9967ae4ebf029a56d646527, type: 3}
+  - {fileID: 6276455859414008014, guid: 26c59dccb49b85840a525c39e36550ac, type: 3}
+  isRestart: 0
