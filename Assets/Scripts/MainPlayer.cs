@@ -1,9 +1,5 @@
 ﻿using System.Collections;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -63,6 +59,7 @@ public class MainPlayer : MonoBehaviour
     [Header("Other Settings")] 
     public LevelGenerate level;
 
+    public GameObject randomPlatform;
     private Animator anim;
     private LineRenderer _lineRenderer;
     private Color startColor;
@@ -88,34 +85,51 @@ public class MainPlayer : MonoBehaviour
 
     void Awake()
     {
-        switch (saveData.level)
+        losePosition = -200f;
+        if (SceneManager.GetActiveScene().name == "MainScene")
         {
-            case 0:
-                losePosition = -176f;
-                RenderSettings.skybox = skyBox1;
-                break;
-            case 1:
-                losePosition = -176f;
-                RenderSettings.skybox = skyBox2;
-                break;
-            case 2:
-                losePosition = -176f;
-                RenderSettings.skybox = skyBox3;
-                break;
-            case 3:
-                losePosition = -290.7f;
-                RenderSettings.skybox = skyBox4;
-                break;
-            case 4:
-                losePosition = -176.7f;
-                RenderSettings.skybox = skyBox3;
-                break;
-            case 5:
-                losePosition = -176.7f;
-                RenderSettings.skybox = skyBox1;
-                break;
+            
+            switch (saveData.level)
+            {
+                case 0:
+                    losePosition = -176f;
+                    RenderSettings.skybox = skyBox1;
+                    break;
+                case 1:
+                    losePosition = -176f;
+                    RenderSettings.skybox = skyBox2;
+                    break;
+                case 2:
+                    losePosition = -176f;
+                    RenderSettings.skybox = skyBox3;
+                    break;
+                case 3:
+                    losePosition = -290.7f;
+                    RenderSettings.skybox = skyBox4;
+                    break;
+                case 4:
+                    losePosition = -176.7f;
+                    RenderSettings.skybox = skyBox3;
+                    break;
+                case 5:
+                    losePosition = -176.7f;
+                    RenderSettings.skybox = skyBox1;
+                    break;
+                case 6:
+                    losePosition = -176.7f;
+                    RenderSettings.skybox = skyBox1;
+                    break;
+                case 7:
+                    losePosition = -176.7f;
+                    RenderSettings.skybox = skyBox1;
+                    break;
+                case 8:
+                    losePosition = -176.7f;
+                    RenderSettings.skybox = skyBox1;
+                    break;
+            }
         }
-        
+
         _buttonMove = joystick.GetComponent<UIButtonInfo>();
         pSystem = gameObject.transform.Find("FireWork").GetComponent<ParticleSystem>();
         lineRendererObject = transform.Find("LineRenderer").gameObject;
@@ -124,60 +138,81 @@ public class MainPlayer : MonoBehaviour
 
     void Start()
     {
-        
+
         _deltaX = 274;
         _lookAt = false;
         Time.timeScale = 0;
         _timer = 0;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        
+
         startColor = _lineRenderer.startColor;
         secondColor = Color.green;
         secondColor.a = 0.5f;
 
         float max;
-        switch (saveData.level)
+        if (SceneManager.GetActiveScene().name == "MainScene")
         {
-            case 0:
-                slider.minValue = transform.position.z;
-                slider.maxValue = GameObject.Find("Finish").transform.position.z - 10;
-                break;
-            case 1:
-                slider.minValue = transform.position.x;
-                max = GameObject.Find("Finish").transform.position.x;
-                slider.maxValue = Mathf.Abs(max) - 40;
-                break;
-            case 2:
-                slider.minValue = transform.position.x;
-                max = GameObject.Find("Finish").transform.position.x;
-                slider.maxValue = Mathf.Abs(max) - 65;
-                break;
-            case 3:
-                slider.minValue = transform.position.x;
-                max = GameObject.Find("Finish").transform.position.x;
-                slider.maxValue = Mathf.Abs(max) - 75;
-                break;
-            case 4:
-                slider.minValue = transform.position.x;
-                max = GameObject.Find("Finish").transform.position.x;
-                slider.maxValue = Mathf.Abs(max) - 75;
-                break;
-            case 5:
-                slider.minValue = transform.position.x;
-                max = GameObject.Find("Finish").transform.position.x;
-                slider.maxValue = Mathf.Abs(max) - 75;
-                break;
+            switch (saveData.level)
+            {
+                case 0:
+                    slider.minValue = transform.position.z;
+                    slider.maxValue = GameObject.Find("Finish").transform.position.z - 10;
+                    break;
+                case 1:
+                    slider.minValue = transform.position.x;
+                    max = GameObject.Find("Finish").transform.position.x;
+                    slider.maxValue = Mathf.Abs(max) - 40;
+                    break;
+                case 2:
+                    slider.minValue = transform.position.x;
+                    max = GameObject.Find("Finish").transform.position.x;
+                    slider.maxValue = Mathf.Abs(max) - 65;
+                    break;
+                case 3:
+                    slider.minValue = transform.position.x;
+                    max = GameObject.Find("Finish").transform.position.x;
+                    slider.maxValue = Mathf.Abs(max) - 75;
+                    break;
+                case 4:
+                    slider.minValue = transform.position.x;
+                    max = GameObject.Find("Finish").transform.position.x;
+                    slider.maxValue = Mathf.Abs(max) - 75;
+                    break;
+                case 5:
+                    slider.minValue = transform.position.x;
+                    max = GameObject.Find("Finish").transform.position.x;
+                    slider.maxValue = Mathf.Abs(max) - 75;
+                    break;
+                case 6:
+                    slider.minValue = transform.position.x;
+                    max = GameObject.Find("Finish").transform.position.x;
+                    slider.maxValue = Mathf.Abs(max) - 75;
+                    break;
+                case 7:
+                    slider.minValue = transform.position.x;
+                    max = GameObject.Find("Finish").transform.position.x;
+                    slider.maxValue = Mathf.Abs(max) - 75;
+                    break;
+                case 8:
+                    slider.minValue = transform.position.x;
+                    max = GameObject.Find("Finish").transform.position.x;
+                    slider.maxValue = Mathf.Abs(max) - 75;
+                    break;
+            }
         }
     }
 
     void FixedUpdate()
     {
-        if (saveData.level == 0)
-            slider.value = transform.position.z;
-        
-        else slider.value = Mathf.Abs(transform.position.x);
-        
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            if (saveData.level == 0)
+                slider.value = transform.position.z;
+
+            else slider.value = Mathf.Abs(transform.position.x);
+        }
+
         transform.Translate(Vector3.forward * joystick.Direction.y/2);
         
         _deltaX += (joystick.Direction.x + 1 ) * (joystick.Direction.x + 1) * _sensitive - _sensitive;
@@ -217,6 +252,26 @@ public class MainPlayer : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "RandomPlatform")
+        {
+            jumpSound.Play();
+            StartCoroutine(DestroyRandomPlatform(collision.gameObject));
+            if (collision.gameObject.transform.parent.GetComponent<Platform>().pointBool)
+            {
+                Instantiate(randomPlatform, new Vector3(collision.transform.position.x + Random.Range(-20f, -40f),
+                    collision.transform.position.y,
+                    collision.transform.position.z + Random.Range(10f, 10f)), Quaternion.identity);
+                points += 1;
+            }
+            rb.velocity = Vector3.up * _jumpForce;
+            anim.SetTrigger("flip");
+            Instantiate(repulsionEffect, transform.position, Quaternion.identity);
+            repulsionEffect.SetActive(true);
+            collision.gameObject.transform.parent.GetComponent<Platform>().pointBool = false;
+            pointsTextCount.text = points.ToString();
+            collision.gameObject.transform.parent.GetComponent<Platform>().destruction++;
+        }
+        
         if (collision.gameObject.tag == "Finish")
         {
             cameraFinish = false;
@@ -305,12 +360,23 @@ public class MainPlayer : MonoBehaviour
         StartCoroutine(TimeNormalization());
     }
 
+    public void RestartRecordGame()
+    {
+        buttonSound.Play();
+        saveData.record = (int)points;
+        SceneManager.LoadScene("Menu");
+    }
     public void RestartGame()
     {
         buttonSound.Play();
         SceneManager.LoadScene("Menu");
     }
 
+    private IEnumerator DestroyRandomPlatform(GameObject platform)
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(platform.gameObject);
+    }
     IEnumerator PerfectJumpSlowTime()
     {
         yield return new WaitForSeconds(0.2f);
@@ -327,7 +393,8 @@ public class MainPlayer : MonoBehaviour
     {
         joystickObject.SetActive(true);
         yield return new WaitForSecondsRealtime(0.50f);
-        sliderObject.SetActive(true);
+        if (SceneManager.GetActiveScene().name == "MainScene") 
+            sliderObject.SetActive(true);
         camera.GetComponent<Animator>().SetTrigger("default");
         Time.timeScale = 1;
     }

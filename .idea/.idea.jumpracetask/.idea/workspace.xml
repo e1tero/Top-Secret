@@ -59,10 +59,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIButtonInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Новая папка (2)/football/Assets/Scripts/MoveBall.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../prototypes.git/Assets/Scripts/MoveBall.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIButtonInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -122,6 +122,10 @@
       <workItem from="1605926313191" duration="3661000" />
       <workItem from="1605995159509" duration="7314000" />
       <workItem from="1606251368497" duration="931000" />
+      <workItem from="1606616138169" duration="65000" />
+      <workItem from="1607089287830" duration="1076000" />
+      <workItem from="1607128669263" duration="10802000" />
+      <workItem from="1607164492627" duration="992000" />
     </task>
     <servers />
   </component>

@@ -10,6 +10,7 @@ TagManager:
   - Text
   - Trampoline2
   - Coin
+  - RandomPlatform
   layers:
   - Default
   - TransparentFX

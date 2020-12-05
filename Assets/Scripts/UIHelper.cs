@@ -11,8 +11,12 @@ public class UIHelper : MonoBehaviour
     public SaveData saveData;
     public Text coins;
     public GameObject helpWindow;
+    public GameObject thirdMenu;
+    public Text record;
 
     public AudioSource buttonSound;
+    public GameObject soundOn;
+    public GameObject soundOff;
 
     public GameObject level1;
     public GameObject level2;
@@ -20,7 +24,28 @@ public class UIHelper : MonoBehaviour
     public GameObject level4;
     public GameObject level5;
     public GameObject level6;
-    
+    public GameObject level7;
+    public GameObject level8;
+    public GameObject level9;
+
+
+    void Awake()
+    {
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            if (AudioListener.volume == 0)
+            {
+                soundOn.SetActive(false);
+                soundOff.SetActive(true);
+            }
+
+            else if (AudioListener.volume == 1)
+            {
+                soundOn.SetActive(true);
+                soundOff.SetActive(false);
+            }
+        }
+    }
     
     void Start()
     {
@@ -31,7 +56,7 @@ public class UIHelper : MonoBehaviour
             level1.GetComponent<Image>().color = Color.green;
         }
         
-        if (saveData.coins > 5 && saveData.currentLevel >= 0)
+        if (saveData.coins > 5 && saveData.currentLevel >= 1)
         {
             level2.GetComponent<Image>().color = Color.green;
         }
@@ -55,6 +80,22 @@ public class UIHelper : MonoBehaviour
         {
             level6.GetComponent<Image>().color = Color.green;
         }
+        
+        if (saveData.coins > 30 && saveData.currentLevel >= 5)
+        {
+            level7.GetComponent<Image>().color = Color.green;
+        }
+        
+        if (saveData.coins > 35 && saveData.currentLevel >= 6)
+        {
+            level8.GetComponent<Image>().color = Color.green;
+        }
+        
+        if (saveData.coins > 40 && saveData.currentLevel >= 7)
+        {
+            level9.GetComponent<Image>().color = Color.green;
+        }
+        
     }
 
     public void StartGame()
@@ -74,6 +115,33 @@ public class UIHelper : MonoBehaviour
         buttonSound.Play();
         helpWindow.SetActive(true);
         StartCoroutine(CloseHelpWindow());
+    }
+
+    public void OpenInfinityWindow()
+    {
+        buttonSound.Play();
+        firstMenu.SetActive(false);
+        thirdMenu.SetActive(true);
+        record.text = saveData.record.ToString();
+    }
+
+    public void SoundOn()
+    {
+        soundOff.SetActive(false);
+        soundOn.SetActive(true);
+        AudioListener.volume = 1;
+    }
+    
+    public void SoundOff()
+    {
+        soundOff.SetActive(true);
+        soundOn.SetActive(false);
+        AudioListener.volume = 0;
+    }
+
+    public void StartInfinityMode()
+    {
+        SceneManager.LoadScene("InfinityMode");
     }
 
     IEnumerator CloseHelpWindow()
@@ -121,6 +189,24 @@ public class UIHelper : MonoBehaviour
             {
                 if (saveData.coins >= 25 && saveData.currentLevel >= 4)
                     saveData.level = 5;
+                break;
+            }
+            case 7:
+            {
+                if (saveData.coins >= 30 && saveData.currentLevel >= 5)
+                    saveData.level = 6;
+                break;
+            }
+            case 8:
+            {
+                if (saveData.coins >= 35 && saveData.currentLevel >= 6)
+                    saveData.level = 7;
+                break;
+            }
+            case 9:
+            {
+                if (saveData.coins >= 40 && saveData.currentLevel >= 7)
+                    saveData.level = 8;
                 break;
             }
         }

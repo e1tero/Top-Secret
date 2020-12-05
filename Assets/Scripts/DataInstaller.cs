@@ -16,8 +16,6 @@ public class DataInstaller : ScriptableObject
     {
         if (testLevel)
             index = patternLevel;
-        else if (GameManager.levelNumber > 9)
-            index = Random.Range(0, levels.Count);
         else
             index = GameManager.levelNumber;
         

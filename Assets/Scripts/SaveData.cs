@@ -7,11 +7,13 @@ public class SaveData: ScriptableObject
     public int level;
     public int coins;
     public int currentLevel;
+    public int record;
     public int sessionNumber;
     
     
     public SaveData()
     {
+        record = 0;
         coins = 0;
         level = 0;
         currentLevel = 0;

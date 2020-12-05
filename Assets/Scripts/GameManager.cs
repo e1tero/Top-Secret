@@ -43,12 +43,6 @@ public class GameManager : TapToFun.Singleton<GameManager>
     public void StartLevel()
     {
         levelNumber = saveData.level;
-        if (levelNumber >= 6)
-        {
-            saveData.level = 0;
-            levelNumber = saveData.level;
-        }
-
         EventManager.OnLevel?.Invoke(levelNumber);
         level = Instantiate(dataInstaller.GetLevel(levelNumber), new Vector3(-114.706f,-96.119f,15.11899f), Quaternion.identity).GetComponent<Level>();
     }
